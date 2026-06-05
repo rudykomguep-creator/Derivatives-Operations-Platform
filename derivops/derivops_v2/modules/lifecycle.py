@@ -41,7 +41,7 @@ def render():
                 if val == "Pending": return "color: #8899aa"
                 return ""
 
-            st.dataframe(df_display.style.applymap(style_status, subset=["Status"]), use_container_width=True, hide_index=True)
+            st.dataframe(df_display.style.map(style_status, subset=["Status"]), use_container_width=True, hide_index=True)
 
         st.markdown("---")
         st.subheader("Add lifecycle event")
@@ -82,7 +82,7 @@ def render():
             if "Pending" in str(val): return "color: #f0a030"
             return ""
 
-        st.dataframe(corp_actions.style.applymap(style_corp, subset=["Status"]), use_container_width=True, hide_index=True)
+        st.dataframe(corp_actions.style.map(style_corp, subset=["Status"]), use_container_width=True, hide_index=True)
 
         st.info("Corporate actions automatically adjust affected positions upon processing.")
 

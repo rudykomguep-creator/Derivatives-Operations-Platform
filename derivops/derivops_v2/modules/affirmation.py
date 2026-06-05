@@ -37,7 +37,7 @@ def render():
             if "Matched" in str(val): return "color: #4caf82"
             return ""
 
-        st.dataframe(display.style.applymap(style_result, subset=["Result"]), use_container_width=True, hide_index=True)
+        st.dataframe(display.style.map(style_result, subset=["Result"]), use_container_width=True, hide_index=True)
 
         matched = merged["matched"].sum()
         unmatched = len(merged) - matched
@@ -60,7 +60,7 @@ def render():
             if val == "Medium": return "color: #f0a030; font-weight:600"
             return "color: #4caf82"
 
-        st.dataframe(df_exc.style.applymap(style_priority, subset=["Priority"]), use_container_width=True, hide_index=True)
+        st.dataframe(df_exc.style.map(style_priority, subset=["Priority"]), use_container_width=True, hide_index=True)
 
         st.markdown("---")
         st.subheader("Affirm a trade manually")

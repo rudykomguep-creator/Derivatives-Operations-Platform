@@ -60,6 +60,6 @@ def render():
                   "Affirmed": "color: #5b9bd5", "Pending": "color: #f0a030", "Failed": "color: #ff6b6b"}
         return colors.get(val, "")
 
-    st.dataframe(df_trades.style.applymap(color_status, subset=["Status"]), use_container_width=True, hide_index=True)
+    st.dataframe(df_trades.style.map(color_status, subset=["Status"]), use_container_width=True, hide_index=True)
 
     conn.close()

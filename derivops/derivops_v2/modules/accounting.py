@@ -27,7 +27,7 @@ def render():
             if "Unbalanced" in str(val): return "color: #ff6b6b; font-weight:600"
             return ""
 
-        st.dataframe(df.style.applymap(style_valid, subset=["Valid"]), use_container_width=True, hide_index=True)
+        st.dataframe(df.style.map(style_valid, subset=["Valid"]), use_container_width=True, hide_index=True)
 
         st.markdown("---")
         st.subheader("Generate journal entry")
@@ -70,7 +70,7 @@ def render():
             if "Out of balance" in str(val): return "color: #ff6b6b; font-weight:600"
             return ""
 
-        st.dataframe(df_val.style.applymap(style_b, subset=["Status"]), use_container_width=True, hide_index=True)
+        st.dataframe(df_val.style.map(style_b, subset=["Status"]), use_container_width=True, hide_index=True)
 
         balanced = df_val["balanced"].sum()
         total = len(df_val)

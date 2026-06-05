@@ -36,7 +36,7 @@ def render():
             if val == "Pending": return "color: #f0a030"
             return ""
 
-        st.dataframe(df.style.applymap(style_status, subset=["Status"]), use_container_width=True, hide_index=True)
+        st.dataframe(df.style.map(style_status, subset=["Status"]), use_container_width=True, hide_index=True)
 
         st.markdown("---")
         st.subheader("Settlement calculator")
@@ -91,7 +91,7 @@ def render():
                 if val == "Pending": return "color: #f0a030"
                 return ""
 
-            st.dataframe(df_failed.style.applymap(style_s, subset=["Status"]), use_container_width=True, hide_index=True)
+            st.dataframe(df_failed.style.map(style_s, subset=["Status"]), use_container_width=True, hide_index=True)
 
             if st.button("🔔 Escalate all failed settlements"):
                 st.warning("Escalation notification sent to Operations Management.")

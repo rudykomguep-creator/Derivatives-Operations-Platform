@@ -36,7 +36,7 @@ def render():
             if "Matched" in str(val): return "color: #4caf82"
             return ""
 
-        st.dataframe(display.style.applymap(highlight, subset=["Result"]), use_container_width=True, hide_index=True)
+        st.dataframe(display.style.map(highlight, subset=["Result"]), use_container_width=True, hide_index=True)
 
         mismatches = len(merged[merged["status"].str.contains("Mismatch")])
         st.metric("Total mismatches", mismatches, delta=None)
@@ -91,7 +91,7 @@ def render():
             if "Partial" in str(val): return "color: #f0a030"
             return ""
 
-        st.dataframe(df_cash.style.applymap(style_cash), use_container_width=True, hide_index=True)
+        st.dataframe(df_cash.style.map(style_cash), use_container_width=True, hide_index=True)
 
         total_breaks = df_cash[df_cash["Delta ($)"] != 0]["Delta ($)"].sum()
         st.metric("Total cash breaks", f"${abs(total_breaks):,.2f}", delta=None)
@@ -122,7 +122,7 @@ def render():
             return "color: #4caf82"
 
         st.dataframe(
-            df_breaks.style.applymap(sev_color, subset=["Severity"]),
+            df_breaks.style.map(sev_color, subset=["Severity"]),
             use_container_width=True, hide_index=True
         )
 
